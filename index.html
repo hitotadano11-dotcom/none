@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9 de Noviembre</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #050505;
+            color: #b32424;
+            font-family: 'Courier New', Courier, monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Canvas de fondo con efecto derretido */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+
+        /* Modal de Contraseña */
+        .auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: rgba(15, 5, 5, 0.9);
+            border: 1px solid #4a0d0d;
+            padding: 40px 30px;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(120, 0, 0, 0.3);
+            max-width: 380px;
+            width: 100%;
+        }
+
+        .auth-card p {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .auth-input {
+            width: 100%;
+            background: #000;
+            border: 1px solid #661111;
+            color: #ff4d4d;
+            padding: 12px;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            outline: none;
+            margin-bottom: 15px;
+            font-family: inherit;
+        }
+
+        .auth-btn {
+            width: 100%;
+            background: #3a0808;
+            border: 1px solid #661111;
+            color: #d1d1d1;
+            padding: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .auth-btn:hover {
+            background: #5c0d0d;
+            color: #fff;
+        }
+
+        .error-msg {
+            color: #ff3333;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Contenedor Principal */
+        .main-container {
+            display: none;
+            z-index: 10;
+            width: 100%;
+            max-width: 750px;
+            padding: 40px 20px 140px 20px;
+        }
+
+        .content-card {
+            background: rgba(10, 2, 2, 0.85);
+            border: 1px solid #330808;
+            padding: 40px 30px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #a82e2e;
+            white-space: pre-line;
+            text-align: justify;
+        }
+
+        .highlight-date {
+            color: #ffffff !important;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        .cake-emoji {
+            display: block;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 30px;
+            filter: drop-shadow(0 0 10px rgba(168, 46, 46, 0.5));
+        }
+
+        /* Reproductor de Spotify Fijo */
+        .spotify-player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: #000;
+            border-top: 1px solid #330808;
+            display: none;
+        }
+
+        .spotify-player iframe {
+            width: 100%;
+            height: 80px;
+            border: none;
+        }
+
+        /* Animación de vibración para error */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Modal de Contraseña -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-card" id="authCard">
+            <p>INGRESA LA CONTRASEÑA</p>
+            <input type="password" id="passInput" class="auth-input" placeholder="DD/MM" maxlength="5">
+            <button class="auth-btn" onclick="checkPass()">ENTRAR</button>
+            <div class="error-msg" id="errorMsg">Contraseña incorrecta</div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="main-container" id="mainContainer">
+        <div class="content-card">
+Hola. Bueno, solo quiero expresar varias cosas a través de esto. Lo más probable es que me tengas rencor y no sé exactamente por qué, y aunque a veces cueste entender cómo terminaron las cosas, solo espero que este <span class="highlight-date">9 de noviembre</span> puedas disfrutar con tus amigos, familiares y las personas que amas. Hace unos meses decíamos que estaríamos haciendo pizza de galleta; hubiera sido increíble, habríamos cumplido 5 meses con esto, o eso creo. Pero ya no importa, las cosas no salieron como esperábamos, aunque al menos sigues en pie.
+
+Quizás ni siquiera estés leyendo esto, y si lo hiciste, muchas gracias por lo que me diste esos meses; fueron los mejores 3 meses de mi existencia hasta ahora. Hubo gente inventando un sinfín de cosas, un montón de versiones, y aunque a veces uno duda de todo, yo sé lo que fui. Mis palabras nunca fueron mentira, ni las que te dije antes ni ninguna otra. Te quise de verdad. 
+
+La verdad ha sido muy pesado. Extraño esas noches en las que esperaba con felicidad que fuera de noche para que estuviéramos hablando juntos, riéndonos. Hoy en día todo lo veo gris; me duele la garganta, me duele el cuerpo, y siento que mi vida ha ido en decadencia y en ascendente a la vez, pero ni aún así logro sentirme bien. Todo se fue al carajo, y me sigue doliendo mucho. No hablo con nadie porque me siento tan solo, al punto de que incluso llegué a dejar de confiar en mis amigos y a cuestionar todo por culpa de las situaciones que pasaron, sin saber si las indirectas o los comentarios eran para mí. 
+
+Si estoy decepcionado, lo estoy de muchas cosas, empezando por mí mismo y también por ti, por actitudes como los bloqueos de todos lados. Yo desactivé mis cuentas de Facebook solo para ver tu reacción, y al final sentí que querías deshacerte de mí; imagínate a qué magnitud tuvo que llegar todo eso. ¿Crees que a mí no me duele planear tantas cosas, investigar qué mierda pasa y ver que la gente solo trata de usarme? 
+
+Intenté ayudar a Denisse y ¿qué pasó? Solo me usó, y por un momento mi cabeza supuso cosas raras, pensando que estabas detrás de ello o relacionándolo todo contigo por la forma en que se dieron las acciones. Quería ayuda de mis amigos y me dieron la espalda cuando más lo necesitaba; yo hago todo por ellos cuando están mal y a la hora de la hora me dan la espalda. Por eso mismo me siento tan decepcionado de todo esto. Tomé decisiones que me afectaron demasiado, no por ti, sino por mi futuro, pero qué importa ya.
+
+No quiero solucionar esta mierda ni me interesa arreglarlo todo, solo quiero estar tranquilo y poder soportar mis días, mi trabajo y mis batallas. Sé que esto ya es del pasado, pero te quise de verdad, cuántas veces no lloré por ti, varias. Últimamente hasta te sueño. Y si estás intentando maldecirme de alguna manera, pues ya lo hiciste. 
+
+Este es mi último mes antes de desaparecer de tu vida por completo. Se viene mi trama de estrés, dolor, ganas de no seguir viviendo y de aguantar mierda, pero creo que está bien, supongo que me lo merezco para poder olvidarme de todo lo que sucedió y seguir con mi vida así como tú lo estás haciendo. Confío en que lo harás. 
+
+Nunca te desanimes. Aunque me duela el hecho de que encuentres a alguien más con quien pasar este fin de año o estar en la universidad, alégrate, conoce gente; quizás sea mejor que yo, y lo será, no físicamente, pero sí en la manera en que se pueda acoplar a ti. Yo reconozco que fallé, que no di nada cuando estuve contigo y que fui un mal novio en el sentido de que nunca pude resolver un problema y siempre venías a ayudarme. Eso ya lo sé. 
+
+Lo importante es que mejores como persona, que aprendas a pensar más de lo que sabes y que nunca te dejes llevar por los demás, ten siempre la cabeza fría. Si tienes algo en contra de mí, ven y dímelo a la cara, o si al menos quieres que desaparezca de tu existencia, solo dime todo lo que odias o haz algo. 
+
+Solo quiero saber que te vas a cuidar, que vas a seguir adelante y que vas a mejorar. Cuídate demasiado, el mundo es horrible y no quiero que te hagan daño. Ya eres mayor de edad y tomarás tus propias decisiones; solo hazlo bien. 
+
+Felicidades por tus 18 años, María. Espero que tus propósitos se cumplan, y te deseo también una feliz Navidad y un feliz año nuevo. Es todo. Gracias por tu atención...
+
+<span class="cake-emoji">🎂</span>
+        </div>
+    </div>
+
+    <!-- Reproductor de Spotify -->
+    <div class="spotify-player" id="spotifyPlayer">
+        <iframe src="https://open.spotify.com/embed/track/0JIMT9gzLIIz0esKLyjbKf?utm_source=generator&theme=0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <script>
+        // Verificación de Contraseña
+        function checkPass() {
+            const input = document.getElementById('passInput').value.trim();
+            const card = document.getElementById('authCard');
+            const error = document.getElementById('errorMsg');
+            
+            if (input === "09/11" || input === "0911") {
+                document.getElementById('authOverlay').style.display = 'none';
+                document.getElementById('mainContainer').style.display = 'block';
+                document.getElementById('spotifyPlayer').style.display = 'block';
+            } else {
+                card.classList.add('shake');
+                error.style.display = 'block';
+                setTimeout(() => {
+                    card.classList.remove('shake');
+                }, 400);
+            }
+        }
+
+        // Permitir presionar "Enter" en el input
+        document.getElementById('passInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPass();
+            }
+        });
+
+        // Fondo Canvas: Efecto Derretido Triste
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Drip {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height;
+                this.speed = Math.random() * 1.5 + 0.3;
+                this.length = Math.random() * 40 + 10;
+                this.width = Math.random() * 2 + 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(139, 0, 0, ${this.opacity})`;
+                ctx.lineWidth = this.width;
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x, this.y + this.length);
+                ctx.stroke();
+
+                // Gota derretida en la punta
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(100, 0, 0, ${this.opacity})`;
+                ctx.arc(this.x, this.y + this.length, this.width * 1.5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        const drips = Array.from({ length: 45 }, () => new Drip());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drips.forEach(drip => {
+                drip.update();
+                drip.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
