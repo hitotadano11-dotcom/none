@@ -24,7 +24,7 @@
             position: relative;
         }
 
-        /* Canvas de fondo con efecto derretido */
+        /* Canvas de fondo con efecto derretido sombrío */
         #bgCanvas {
             position: fixed;
             top: 0;
@@ -33,7 +33,7 @@
             height: 100vh;
             z-index: 1;
             pointer-events: none;
-            opacity: 0.35;
+            opacity: 0.4;
         }
 
         /* Modal de Contraseña */
@@ -53,7 +53,7 @@
         }
 
         .auth-card {
-            background: rgba(15, 5, 5, 0.9);
+            background: rgba(15, 5, 5, 0.95);
             border: 1px solid #4a0d0d;
             padding: 40px 30px;
             border-radius: 4px;
@@ -114,11 +114,11 @@
             z-index: 10;
             width: 100%;
             max-width: 750px;
-            padding: 40px 20px 140px 20px;
+            padding: 60px 20px 60px 20px;
         }
 
         .content-card {
-            background: rgba(10, 2, 2, 0.85);
+            background: rgba(10, 2, 2, 0.88);
             border: 1px solid #330808;
             padding: 40px 30px;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
@@ -132,7 +132,7 @@
         .highlight-date {
             color: #ffffff !important;
             font-weight: bold;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
         }
 
         .cake-emoji {
@@ -143,19 +143,48 @@
             filter: drop-shadow(0 0 10px rgba(168, 46, 46, 0.5));
         }
 
-        /* Reproductor de Spotify Fijo */
-        .spotify-player {
+        /* Botón y Widget Discreto de Spotify */
+        .music-widget {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 50;
-            background: #000;
-            border-top: 1px solid #330808;
+            top: 15px;
+            right: 15px;
+            z-index: 60;
             display: none;
+            flex-direction: column;
+            align-items: flex-end;
         }
 
-        .spotify-player iframe {
+        .music-toggle-btn {
+            background: rgba(15, 5, 5, 0.9);
+            border: 1px solid #661111;
+            color: #d1d1d1;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle-btn:hover {
+            background: #4a0d0d;
+            color: #fff;
+        }
+
+        .spotify-container {
+            display: none;
+            margin-top: 8px;
+            width: 300px;
+            height: 80px;
+            background: #000;
+            border: 1px solid #330808;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.9);
+        }
+
+        .spotify-container iframe {
             width: 100%;
             height: 80px;
             border: none;
@@ -184,6 +213,14 @@
             <input type="password" id="passInput" class="auth-input" placeholder="DD/MM" maxlength="5">
             <button class="auth-btn" onclick="checkPass()">ENTRAR</button>
             <div class="error-msg" id="errorMsg">Contraseña incorrecta</div>
+        </div>
+    </div>
+
+    <!-- Botón / Player de Música -->
+    <div class="music-widget" id="musicWidget">
+        <button class="music-toggle-btn" onclick="toggleSpotify()">🎵 Reproducir Canción</button>
+        <div class="spotify-container" id="spotifyContainer">
+            <iframe src="https://open.spotify.com/embed/track/0JIMT9gzLIIz0esKLyjbKf?utm_source=generator&theme=0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </div>
 
@@ -216,11 +253,6 @@ Felicidades por tus 18 años, María. Espero que tus propósitos se cumplan, y t
         </div>
     </div>
 
-    <!-- Reproductor de Spotify -->
-    <div class="spotify-player" id="spotifyPlayer">
-        <iframe src="https://open.spotify.com/embed/track/0JIMT9gzLIIz0esKLyjbKf?utm_source=generator&theme=0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-
     <script>
         // Verificación de Contraseña
         function checkPass() {
@@ -231,7 +263,7 @@ Felicidades por tus 18 años, María. Espero que tus propósitos se cumplan, y t
             if (input === "09/11" || input === "0911") {
                 document.getElementById('authOverlay').style.display = 'none';
                 document.getElementById('mainContainer').style.display = 'block';
-                document.getElementById('spotifyPlayer').style.display = 'block';
+                document.getElementById('musicWidget').style.display = 'flex';
             } else {
                 card.classList.add('shake');
                 error.style.display = 'block';
@@ -247,6 +279,16 @@ Felicidades por tus 18 años, María. Espero que tus propósitos se cumplan, y t
                 checkPass();
             }
         });
+
+        // Alternar el reproductor compacto de Spotify
+        function toggleSpotify() {
+            const player = document.getElementById('spotifyContainer');
+            if (player.style.display === 'block') {
+                player.style.display = 'none';
+            } else {
+                player.style.display = 'block';
+            }
+        }
 
         // Fondo Canvas: Efecto Derretido Triste
         const canvas = document.getElementById('bgCanvas');
@@ -268,7 +310,7 @@ Felicidades por tus 18 años, María. Espero que tus propósitos se cumplan, y t
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * -canvas.height;
                 this.speed = Math.random() * 1.5 + 0.3;
-                this.length = Math.random() * 40 + 10;
+                this.length = Math.random() * 45 + 10;
                 this.width = Math.random() * 2 + 1;
                 this.opacity = Math.random() * 0.5 + 0.2;
             }
