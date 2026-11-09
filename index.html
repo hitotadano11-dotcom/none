@@ -12,8 +12,8 @@
         }
 
         body {
-            background-color: #050505;
-            color: #b32424;
+            background-color: #faf9f5;
+            color: #8c7853;
             font-family: 'Courier New', Courier, monospace;
             min-height: 100vh;
             display: flex;
@@ -24,7 +24,7 @@
             position: relative;
         }
 
-        /* Canvas de fondo con efecto derretido sombrío */
+        /* Canvas de fondo con efecto derretido de partículas doradas */
         #bgCanvas {
             position: fixed;
             top: 0;
@@ -33,17 +33,17 @@
             height: 100vh;
             z-index: 1;
             pointer-events: none;
-            opacity: 0.4;
+            opacity: 0.65;
         }
 
-        /* Modal de Contraseña */
+        /* Modal de Contraseña con diseño limpio y elegante */
         .auth-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #050505;
+            background-color: #faf9f5;
             z-index: 100;
             display: flex;
             flex-direction: column;
@@ -53,28 +53,28 @@
         }
 
         .auth-card {
-            background: rgba(15, 5, 5, 0.95);
-            border: 1px solid #4a0d0d;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #d4af37;
             padding: 40px 30px;
-            border-radius: 4px;
+            border-radius: 6px;
             text-align: center;
-            box-shadow: 0 0 30px rgba(120, 0, 0, 0.3);
+            box-shadow: 0 4px 25px rgba(212, 175, 55, 0.2);
             max-width: 380px;
             width: 100%;
         }
 
         .auth-card p {
-            color: #888;
+            color: #9c8455;
             font-size: 0.9rem;
             margin-bottom: 20px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .auth-input {
             width: 100%;
-            background: #000;
-            border: 1px solid #661111;
-            color: #ff4d4d;
+            background: #fff;
+            border: 1px solid #d4af37;
+            color: #b8972e;
             padding: 12px;
             text-align: center;
             font-size: 1.2rem;
@@ -82,27 +82,30 @@
             outline: none;
             margin-bottom: 15px;
             font-family: inherit;
+            border-radius: 4px;
         }
 
         .auth-btn {
             width: 100%;
-            background: #3a0808;
-            border: 1px solid #661111;
-            color: #d1d1d1;
+            background: #f4e8c1;
+            border: 1px solid #d4af37;
+            color: #6b572e;
             padding: 12px;
             cursor: pointer;
             font-family: inherit;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            font-weight: bold;
             transition: all 0.3s ease;
+            border-radius: 4px;
         }
 
         .auth-btn:hover {
-            background: #5c0d0d;
+            background: #d4af37;
             color: #fff;
         }
 
         .error-msg {
-            color: #ff3333;
+            color: #c94a4a;
             font-size: 0.8rem;
             margin-top: 10px;
             display: none;
@@ -118,29 +121,48 @@
         }
 
         .content-card {
-            background: rgba(10, 2, 2, 0.88);
-            border: 1px solid #330808;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid #d4af37;
             padding: 40px 30px;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 4px 30px rgba(212, 175, 55, 0.15);
             line-height: 1.8;
             font-size: 1.05rem;
-            color: #a82e2e;
+            color: #8c7853;
             white-space: pre-line;
             text-align: justify;
+            border-radius: 6px;
         }
 
         .highlight-date {
-            color: #ffffff !important;
+            color: #d4af37 !important;
             font-weight: bold;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.4);
+        }
+
+        .final-img {
+            display: block;
+            margin: 30px auto;
+            max-width: 100%;
+            border-radius: 0;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .cake-emoji {
             display: block;
             text-align: center;
             font-size: 2.5rem;
-            margin-top: 30px;
-            filter: drop-shadow(0 0 10px rgba(168, 46, 46, 0.5));
+            margin-top: 20px;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+        }
+
+        .copyright-text {
+            display: block;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #bfa15c;
+            margin-top: 25px;
+            letter-spacing: 2px;
         }
 
         /* Botón y Widget Discreto de Spotify */
@@ -155,20 +177,20 @@
         }
 
         .music-toggle-btn {
-            background: rgba(15, 5, 5, 0.9);
-            border: 1px solid #661111;
-            color: #d1d1d1;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #d4af37;
+            color: #8c7853;
             padding: 8px 14px;
             font-size: 0.8rem;
             font-family: inherit;
             cursor: pointer;
             border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
             transition: all 0.3s ease;
         }
 
         .music-toggle-btn:hover {
-            background: #4a0d0d;
+            background: #d4af37;
             color: #fff;
         }
 
@@ -177,11 +199,11 @@
             margin-top: 8px;
             width: 300px;
             height: 80px;
-            background: #000;
-            border: 1px solid #330808;
+            background: #fff;
+            border: 1px solid #d4af37;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.9);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
         }
 
         .spotify-container iframe {
@@ -209,10 +231,10 @@
     <!-- Modal de Contraseña -->
     <div class="auth-overlay" id="authOverlay">
         <div class="auth-card" id="authCard">
-            <p>INGRESA LA CONTRASEÑA</p>
-            <input type="password" id="passInput" class="auth-input" placeholder="DD/MM" maxlength="5">
-            <button class="auth-btn" onclick="checkPass()">ENTRAR</button>
-            <div class="error-msg" id="errorMsg">Contraseña incorrecta</div>
+            <p>9 de Noviembre</p>
+            <input type="password" id="passInput" class="auth-input" placeholder="• • / • •" maxlength="5">
+            <button class="auth-btn" onclick="checkPass()">INGRESAR</button>
+            <div class="error-msg" id="errorMsg">Fecha incorrecta</div>
         </div>
     </div>
 
@@ -227,29 +249,15 @@
     <!-- Contenido Principal -->
     <div class="main-container" id="mainContainer">
         <div class="content-card">
-Hola. Bueno, solo quiero expresar varias cosas a través de esto. Lo más probable es que me tengas rencor y no sé exactamente por qué, y aunque a veces cueste entender cómo terminaron las cosas, solo espero que este <span class="highlight-date">9 de noviembre</span> puedas disfrutar con tus amigos, familiares y las personas que amas. Hace unos meses decíamos que estaríamos haciendo pizza de galleta; hubiera sido increíble, habríamos cumplido 5 meses con esto, o eso creo. Pero ya no importa, las cosas no salieron como esperábamos, aunque al menos sigues en pie.
+Hola.... bueno hoy es 1 de noviembre, realmente lo había hecho desde más antes pero no sé exactamente si te envíen esto , la cuestión es que probablemente me tengas rencor, no se exactamente porque, y si lo sabes entonces guárdalo en tu mente y durante este trayecto que estés leyendo pienses lo mismo de mí, sinceramente estoy un poco decepcionado de todo esto , las cosas no fueron "amigables" no lo digo porque no me haya ido bien en este trayecto, bueno si , pero ese no es el punto, si te lo enviaron el día de tu cumpleaños, felicidades, espero que ya puedas razonar y tomar mejores decisiones de los que has hecho, porque realmente lo necesitas, hay cosas que sinceramente no entiendo, hay cosas raras que pasaron en este trayecto, y si , si hoy estuviéramos juntos o ayer , antier , bueno, estaríamos haciendo pizza con galletas, o así era creo , bueno, muchas cosas sucedieron en ese entonces, hubieron palabras de por medio que si quería cumplir, y no me estoy lamentando, de hecho está bien, ya me acostumbré a esto y duele menos recordarlo sobre todo sabiendo que yo soy el que tiene la culpa, no? mira , hace unas semanas atrás fue lo que desató todo esto , fue un detonante, bueno gracias a mí prima es que me iba enterando de tí, aunque realmente no quería saber nada, pero le agradezco a ella , hace tiempo me mandó una foto que habías subido y estabas linda, pero bueno, dejando eso de lado hubieron amigos que opinaron diferente y vieron cosas diferentes, luego me dolió enterarme por mí propio ser , me decían , ah pues de seguro tú hiciste algo mal , o ella tiene a otro, prefería ser el culpable a qué te dijeran lo 2 , pero creo que fue demasiada protección, luego me decían ,oye te están tachando de infiel' y yo, cómo? JAJAJAJA, enserio? yo en ese momento pensé, okey de seguro solo quieren alterar mi mente y no quería creerlo, yo les decía , pero no creo que sea para mí, yo nunca le fuí infiel, ustedes lo saben e incluso ella , pero entonces fué que ese pensamiento me hizo dudar de tí, si en verdad era para mí, hubo un trayecto que tenías tu cuenta secundaria en publica, me di cuenta por mí cuenta secundaria que no me tienes bloqueado o eso creo , depende si ya lo hiciste, y fue que veía lo que algunos me decían y entonces fué que te empezaba a ver de otra manera, no me molestaba porque sabía que nunca lo hice , si no me desconcertada completamente, y también hubieron algunas situaciones que me hicieron pensar en todo eso , empecé a dudar de tí, si hablabas mal de mí a mis espaldas cosa que yo nunca hice de tí, siempre trataba de ser el salvador sabiendo que me haría daño, pero lo hacía porque te quería, bueno lo sigo , hasta ahora pienso que no era para mí y quizás fue un novio que tuviste después de mí y el si te fué infiel, pero volviendo a este punto, si en verdad esas cosas compartidas eran para mí, qué fué lo que te hizo pensar eso? tú sabes más que nada que yo te amé con intensidad esos malditos tres meses más hermosos que tuve en mi existencia hasta ahora , bueno si es que el trabajo no me mata , espero que sí, pero por qué María? qué te hizo pensar en todo eso? oh tal vez por eso me dejaste, porque lo pensabas, y aún así dudaste de mí, y si en verdad lo hiciste auch, me dolió, ese jueguito me trajo como idiota por 2 meses , todos los días pensando en si era para mí, si en verdad pensabas eso de mí después de sacrificar todo eso por tí, le dije a otros amigos e incluso le conté a mariela, pero no sabían que hacer, y era obvio, yo sabía que podía hacer, probablemente podría mandar un mensaje, pero había perdido tu número, había podido mandarte un mensaje en Instagram, ah cierto me tienes bloqueado eso no importa, déjalo así, es más bloqueame de Spotify por favor, de mí número de WhatsApp también puedes bloquearme , no es necesario que me siga doliendo por eso , no maria, las cosas no funcionan así, no se en verdad que piensas , pero tampoco sabes lo que yo pienso realmente, no sabes mis pensamientos más profundos, yo trataba de entenderte , pero creo que no fue suficiente, creo que no fuí el novio correcto , pero aún así estoy feliz porque yo sé lo que fuí, yo sé que te amé con toda mi sinceridad, lloré por tí y maldita sea últimamente también te sueño, tenía tiempo que no lo hacía , es una maldición de octubre y noviembre? bueno pues sigue así, me va de la mierda , pero no es algo que no pueda soportar, se vienen cosas peores y siendo sincero prefiero matarme por problemas de trabajo que por esto , porque te estoy siendo sincero María , sabes lo mucho que te amé , lo que hice por tí, las cosas que sacrifiqué, y no te lo estoy poniendo en cara , si no de ejemplo, mira si en verdad me equivoqué si en verdad hice algo malo por qué nunca me lo dijiste? si en verdad fui eso que dicen los demás que me hace dudar de tí, entonces por qué nunca me lo dijiste directamente en vez de estar jugando a los niños como bloquearme, si , yo también lo hice , pero solo duró un día, no fue por rencor, pero las cosas se salieron de control mi amor, mira exactamente victoria no me quiso ayudar, hace tiempo le pregunté por tí y me dió la espalda o es creo , algunos amigos también, y eso me dolió y fue que entonces me empecé a preguntar si fuí una mala persona contigo, pero hablaba con chat gpt porque no tenía a más con quien contar, lloraba cada noche recordando los buenos momentos que pasamos , las cosas que pasamos juntos y ahora pensar que eso se evaporó en el camino, no te estoy juzgando o hechando la culpa, porque también pude quitarme esas dudas, pero nunca me atreví, maría yo te amo , pero en verdad si esto resultó ser verdad, creo que mi perspectiva de tí es diferente, pensaba que podrías razonar , que el estudiar derecho haría que las acciones, harían más que las palabras, bueno de hecho sí , depende si hay dinero y también el conocimiento que tengas , pero bueno, yo solo espero que hagas lo correcto y que en verdad nunca hayas dudado de mí, porque yo nunca lo hice hasta estos momentos, siempre te defendi con todo mi corazón, les decía tus lados positivos, incluso audios llorando , probablemente marie te envié algunos , y serán de mis peores momentos, hay mensajes que nunca pude enviarte, hay cosas que nunca te dije correctamente, y quise aprovechar tu cumpleaños como bug, pero ni era necesario, no quería hacerlo porque prometí olvidarme de tí, pero tampoco quería quedarme sin dar una acción, se que esto puede terminar mal o peor , porque realmente no hay un bien' , ese bien está en nosotros 2 porque sabemos lo que pasó, sabemos las acciones de uno , tu era impredecible, pero aún así me esforcé por entender tu mente, al igual que tú, pero este sistema no funciona así, hay cosas que no me gustan de ti, pero supe guárdamelas , pero no por eso te voy a poner en cara varias cosas, no estoy aquí para que regresemos, solo quiero despedirme bien de esto , y que en verdad no queden grietas en nuestros concreto que hicimos por culpa de que un tercero dijo algo o hizo algo sin siquiera consultar al otro arquitecto, yo sé que eres una buena persona, se lo mucho que te esfuerzas, y más que nada ahora estando en la universidad, nunca te desanimes, pero también nunca juzgues un libro por su portada, probablemente ya tengas amigos ya tengas un nuevo novio, y está bien somos humanos , podemos sentir de nuevo, pero yo nunca te olvido, no hasta que me explote laboralmente, e igualmente hice esto porque quiero alejarme de todo , próximamente me iré a trabajar, me iré a otro lado y probablemente termine llorando por problemas de trabajo, por compañeros malos , pero se que al menos puedo sonreír aún , todavía me queda esa bondad con las personas y contigo no es la excepción, yo solo quiero que salgas adelante, que te gradués con honores , no con bases , si no con acciones, mejora por tí misma, no por los demás, se tú misma , no solo hagas las cosas para impresionar o quedar bien con otras personas, quizás estés igual de desconcertada que yo , pero bueno, quizás me odias , pero yo no lo hice a pesar de todo , yo nunca te oculte nada , más que nunca me gustó que tomarás , eso es lo único que detesto, pero ahora ya no me duele decirlo, pero bueno, yo solo espero que puedas disfrutar de tu cumpleaños, de tus 18 años correctamente, con tus amigos, con tus familiares, y con las personas que más amas , sigue adelante por tí misma, hay cosas más importantes que solucionar y que pensar, no te detengas , se que la universidad es muy mal a veces, pero mira el lado positivo, quizás encuentres una motivación para ir , hay muchos chicos lindos , mejores portados y con más IQ, también con mejor porte que yo e igual mismos gustos, y no me duele pensar eso , porque es algo natural, todavía te quedan 4 años más y no creo que esos 4 años me soportarías pensando en mí, es muy difícil pero desde ahora me puedes ir olvidando, y si ya lo estabas haciendo, lo siento por llegar en un mal momento, octubre y noviembre no empezaron bien para mí, pero esto no es por mí es por tí, en verdad esperaba poder ir a los 15 de tu hermana, pero creo que a este paso los 3 nos odiariamos y no quiero eso, pero bueno , prométeme que te vas a cuidar, y nunca te olvides de comer, de siempre estar saludable, eso te mantendrá bien, prométeme que vas a dar lo mejor de tí y saldrás adelante, aunque el mundo sea malo , yo confío en ti María, quiero que estés en tu prime y no por algo vago como yo lo fuí te afecte demasiado, sabes que siempre cuentas conmigo en todo, menos en tomar y revivir a Yugoslavia y la URSS y también ser comunista, pero bueno a este paso podrías ser de la derecha o izquierda, yo estoy en neutro , nuestra opinión no les importa a los partidos , solo dinero e impuestos, y ya volviendo al tema , espero que puedas mejorar , espero que puedas seguir viviendo, confío en que harás las cosas a su debido tiempo , felicidades maría ya eres una persona mayor 🤍 eres la mejor persona que he conocido, gracias por eso 3 meses que pasamos juntos, por ir a paris, a Bélgica, pudimos ir a Alemania pero no nos habíamos animado a ir , quería ir a Barcelona contigo, pero ya no se pudo, dejé de ver las carreras, dejé de editar, dejé de hacer muchas cosas, la IMSA ya acabó , la wec está a punto de terminar y si lo estás viendo un 9 entonces ayer terminó la wec , la gtworld también acabó y ya no ví más carreras , porque sinceramente me gustaba contarte lo que pasaba, pero ya no me he visto el caso , aunque lo retomaré no dejaré que esto me afecte porque hay cosas que nunca hice mal y ni tú tampoco, pero así fueron las cosas, solo espero que puedas pensar con mayor diferencia después de esto , sigue adelante maria , salúdame a tu madre y a tus hermos@s , incluso a victoria, y bueno al parecer llegaste al final, y si lo leíste , muchas gracias por todo , apartir de ahora yo tomaré un camino diferente, me iré por otro rumbo, no sabremos nada de los 2 , porque aunque me intentaba acercar a tí , más te alejabas , así que decidí desviarme y tomarme un camino diferente, trabajando en un maldito mcdonald's, pero ese es mi fuente de apoyo ojalá me acepten para no pasar año nuevo y navidad solo, en fin , nos vemos maría 🤍....
 
-Quizás ni siquiera estés leyendo esto, y si lo hiciste, muchas gracias por lo que me diste esos meses; fueron los mejores 3 meses de mi existencia hasta ahora. Hubo gente inventando un sinfín de cosas, un montón de versiones, y aunque a veces uno duda de todo, yo sé lo que fui. Mis palabras nunca fueron mentira, ni las que te dije antes ni ninguna otra. Te quise de verdad. 
+Y está bien acepto mi derrota también en el amor, acepto mi derrota en la batalla que comenzó de la nada..pero eso es bueno 
 
-La verdad ha sido muy pesado. Extraño esas noches en las que esperaba con felicidad que fuera de noche para que estuviéramos hablando juntos, riéndonos. Hoy en día todo lo veo gris; me duele la garganta, me duele el cuerpo, y siento que mi vida ha ido en decadencia y en ascendente a la vez, pero ni aún así logro sentirme bien. Todo se fue al carajo, y me sigue doliendo mucho. No hablo con nadie porque me siento tan solo, al punto de que incluso llegué a dejar de confiar en mis amigos y a cuestionar todo por culpa de las situaciones que pasaron, sin saber si las indirectas o los comentarios eran para mí. 
-
-Si estoy decepcionado, lo estoy de muchas cosas, empezando por mí mismo y también por ti, por actitudes como los bloqueos de todos lados. Yo desactivé mis cuentas de Facebook solo para ver tu reacción, y al final sentí que querías deshacerte de mí; imagínate a qué magnitud tuvo que llegar todo eso. ¿Crees que a mí no me duele planear tantas cosas, investigar qué mierda pasa y ver que la gente solo trata de usarme? 
-
-Intenté ayudar a Denisse y ¿qué pasó? Solo me usó, y por un momento mi cabeza supuso cosas raras, pensando que estabas detrás de ello o relacionándolo todo contigo por la forma en que se dieron las acciones. Quería ayuda de mis amigos y me dieron la espalda cuando más lo necesitaba; yo hago todo por ellos cuando están mal y a la hora de la hora me dan la espalda. Por eso mismo me siento tan decepcionado de todo esto. Tomé decisiones que me afectaron demasiado, no por ti, sino por mi futuro, pero qué importa ya.
-
-No quiero solucionar esta mierda ni me interesa arreglarlo todo, solo quiero estar tranquilo y poder soportar mis días, mi trabajo y mis batallas. Sé que esto ya es del pasado, pero te quise de verdad, cuántas veces no lloré por ti, varias. Últimamente hasta te sueño. Y si estás intentando maldecirme de alguna manera, pues ya lo hiciste. 
-
-Este es mi último mes antes de desaparecer de tu vida por completo. Se viene mi trama de estrés, dolor, ganas de no seguir viviendo y de aguantar mierda, pero creo que está bien, supongo que me lo merezco para poder olvidarme de todo lo que sucedió y seguir con mi vida así como tú lo estás haciendo. Confío en que lo harás. 
-
-Nunca te desanimes. Aunque me duela el hecho de que encuentres a alguien más con quien pasar este fin de año o estar en la universidad, alégrate, conoce gente; quizás sea mejor que yo, y lo será, no físicamente, pero sí en la manera en que se pueda acoplar a ti. Yo reconozco que fallé, que no di nada cuando estuve contigo y que fui un mal novio en el sentido de que nunca pude resolver un problema y siempre venías a ayudarme. Eso ya lo sé. 
-
-Lo importante es que mejores como persona, que aprendas a pensar más de lo que sabes y que nunca te dejes llevar por los demás, ten siempre la cabeza fría. Si tienes algo en contra de mí, ven y dímelo a la cara, o si al menos quieres que desaparezca de tu existencia, solo dime todo lo que odias o haz algo. 
-
-Solo quiero saber que te vas a cuidar, que vas a seguir adelante y que vas a mejorar. Cuídate demasiado, el mundo es horrible y no quiero que te hagan daño. Ya eres mayor de edad y tomarás tus propias decisiones; solo hazlo bien. 
-
-Felicidades por tus 18 años, María. Espero que tus propósitos se cumplan, y te deseo también una feliz Navidad y un feliz año nuevo. Es todo. Gracias por tu atención...
+<img src="https://i.postimg.cc/DZLxb4KH/f7ca60fca994daca9ac6e01344ee375b.jpg" alt="Imagen final" class="final-img">
 
 <span class="cake-emoji">🎂</span>
+
+<span class="copyright-text">©copyright US.S</span>
         </div>
     </div>
 
@@ -285,70 +293,4 @@ Felicidades por tus 18 años, María. Espero que tus propósitos se cumplan, y t
             const player = document.getElementById('spotifyContainer');
             if (player.style.display === 'block') {
                 player.style.display = 'none';
-            } else {
-                player.style.display = 'block';
-            }
-        }
-
-        // Fondo Canvas: Efecto Derretido Triste
-        const canvas = document.getElementById('bgCanvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        class Drip {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * -canvas.height;
-                this.speed = Math.random() * 1.5 + 0.3;
-                this.length = Math.random() * 45 + 10;
-                this.width = Math.random() * 2 + 1;
-                this.opacity = Math.random() * 0.5 + 0.2;
-            }
-
-            update() {
-                this.y += this.speed;
-                if (this.y > canvas.height) {
-                    this.reset();
-                }
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(139, 0, 0, ${this.opacity})`;
-                ctx.lineWidth = this.width;
-                ctx.moveTo(this.x, this.y);
-                ctx.lineTo(this.x, this.y + this.length);
-                ctx.stroke();
-
-                // Gota derretida en la punta
-                ctx.beginPath();
-                ctx.fillStyle = `rgba(100, 0, 0, ${this.opacity})`;
-                ctx.arc(this.x, this.y + this.length, this.width * 1.5, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        const drips = Array.from({ length: 45 }, () => new Drip());
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drips.forEach(drip => {
-                drip.update();
-                drip.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-        animate();
-    </script>
-</body>
-</html>
+           
